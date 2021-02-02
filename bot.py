@@ -1,8 +1,7 @@
 #!/bin/python3
 from sdk_bot.client import Client
 from sys import path
-
-bot_token = 'your token'
+from config import bot_token
 
 bot = Client(bot_token)
 try:
