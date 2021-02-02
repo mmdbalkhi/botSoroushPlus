@@ -13,11 +13,11 @@ To run bot in development mode; Just use steps below:
   virtualenv -p python3 venv  # Create virtualenv named build
   source build/bin/activate
   pip install -r requirements.txt
-  mv  bot.py.sample bot.py
+  mv  config.py.sample config.py
   ```
 4. edit ``bot.py`` and add your token:
 `````python
-..
+
 bot_token = "your token"
-..
+
 `````
