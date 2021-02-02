@@ -15,3 +15,13 @@ To run bot in development mode; Just use steps below:
   mv  bot.py.sample bot.py
   ```
 ``````
+
+4. edit bot.py and add your token:;````````
+  ```python
+  .
+  .
+  bot_token = 'your token'
+  .
+  .
+```
+``````
