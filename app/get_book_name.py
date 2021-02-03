@@ -16,13 +16,11 @@ def get_book_name(search_mark):
     names = ''
     for name in soup.select('.bookTitle span'):
 
-        newname = str(name).replace("<spen>", "")
-        if newname == name:
-            newname = str(name).replace(
-                """<span aria-level="4" itemprop="name" role="heading">""", "")
-        name = newname
+        newname = str(name).replace("</span>", "")
+        newname = str(newname).replace(
+            """<span aria-level="4" itemprop="name" role="heading">""", "")
         looppnum += 1
-        names += f'{name}\n'
-        if looppnum == 10: # TODO: loopnum is hard code
+        names += f"{newname}\n"
+        if looppnum == 10:  # TODO: loopnum is hardCode
             break
-        return names
+    return names

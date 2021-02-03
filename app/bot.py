@@ -13,7 +13,6 @@ try:
     messages = bot.get_messages()
     for message in messages:
         print("New Message Received: " + str(message))
-        #text = get_book_name(message[""])
-        #bot.send_text(message["from"], text)
+        bot.send_text(message["from"], get_book_name(message["body"]))
 except Exception as e:
     print(e.args[0])
