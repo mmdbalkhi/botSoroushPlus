@@ -12,15 +12,16 @@ def get_book_name(search_mark):
     data = get(good_reads).content
     soup = BeautifulSoup(data, features="html5lib")
 
-    looppnum = 0
+    loopnum = 0
     names = ''
     for name in soup.select('.bookTitle span'):
 
         newname = str(name).replace("</span>", "")
         newname = str(newname).replace(
             """<span aria-level="4" itemprop="name" role="heading">""", "")
-        looppnum += 1
-        names += f"{newname}\n"
-        if looppnum == 10:  # TODO: loopnum is hardCode
+        loopnum += 1
+
+        names += f"{loopnum}- {newname}\n\n"
+        if loopnum == 10:  # TODO: loopnum is hardCode
             break
-    return names
+    return "این کتاب ها را یافتیم!\n\n"+names

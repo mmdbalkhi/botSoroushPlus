@@ -13,6 +13,12 @@ try:
     messages = bot.get_messages()
     for message in messages:
         print("New Message Received: " + str(message))
-        bot.send_text(message["from"], get_book_name(message["body"]))
+
+        send_text = get_book_name(message["body"])
+
+        if send_text == "این کتاب ها را یافتیم!\n\n":
+            send_text = "چیزی نیافتیم! لطفا در نوشتار کلمه دقت کنید! "
+
+        bot.send_text(message["from"], send_text)
 except Exception as e:
     print(e.args[0])
