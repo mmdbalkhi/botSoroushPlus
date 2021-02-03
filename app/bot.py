@@ -4,9 +4,8 @@ from sys import path
 from requests import get
 
 from config import bot_token
-from sdk_bot.client import Client
 from get_book_name import get_book_name
-
+from sdk_bot.client import Client
 
 bot = Client(bot_token)
 try:

@@ -6,7 +6,8 @@ from time import sleep
 
 
 class Client:
-    HEADERS = {'Content-Type': 'Application/json', 'Accept': 'Application/json'}
+    HEADERS = {'Content-Type': 'Application/json',
+               'Accept': 'Application/json'}
     BASE_URL = 'https://bot.sapp.ir/'
     GET_MESSAGE_URL = '/getMessage'
     SEND_MESSAGE_URL = '/sendMessage'
