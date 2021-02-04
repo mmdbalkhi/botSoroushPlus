@@ -1,0 +1,1 @@
+bot_token = 'LOCO3AHxlVHbMZmXcdh18a1bvury_kd_s94aI45pA8qxYbQOaGd4kNtYK6uqgn3CVy8yRez_9xTnHvj79mnJZBkaCu9fK5G8DTrDsDujdRaKEhF8mzGPT94wDh5VRfWzmUXVVVD60V5DXX2C'
