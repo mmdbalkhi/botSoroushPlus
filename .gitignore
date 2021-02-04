@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 
 #config.py
-confgig.py
+config.py
+
