@@ -15,7 +15,7 @@ To run bot in development mode; Just use steps below:
 ``` bash
   git clone https://github.com/KomeilParseh/botSoroushPlus.git && cd botSoroushPlus
   virtualenv -p python3 venv  # Create virtualenv named build
-  source build/bin/activate
+  source venv/bin/activate
   pip install -r requirements.txt
   mv  config.py.sample config.py
   ```
