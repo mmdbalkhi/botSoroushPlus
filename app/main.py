@@ -1,9 +1,9 @@
 #!env/bin/ python3
 """main file in soroush plus Bot"""
 
+from client import Client
 from config import BOT_TOKEN
 from get_book_name import get_book_name
-from client import Client
 
 START_TEXT = """سلام به ربات کتاب خوب خوش آمدید
 نزدیکترین نام به کتاب مدنظرتون رو بنویسید تا ربات پیدا بکنه! """
