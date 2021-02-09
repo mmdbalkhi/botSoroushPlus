@@ -1,10 +1,12 @@
-#!/env/bin/python3
+#!/env/bin python3
 """Module get_book_name"""
+
 from bs4 import BeautifulSoup
 from requests import get
 
 
 def delete_char(name):
+    """delete span tag in name"""
     newname = str(name).replace("</span>", "")
     newname = str(newname).replace(
         """<span aria-level="4" itemprop="name" role="heading">""", "")

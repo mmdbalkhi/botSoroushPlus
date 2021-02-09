@@ -1,8 +1,9 @@
-import requests
-import sseclient
 import json
 import os
 from time import sleep
+
+import requests
+import sseclient
 
 
 class Client:
