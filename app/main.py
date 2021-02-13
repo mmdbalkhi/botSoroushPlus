@@ -1,12 +1,12 @@
 #!env/bin/ python3
-"""main file in soroush plus Bot"""
+"""main file in soroush plus Bot
+"""
 
-from client import Client
+from client import Client, get_book_name
+
 from config import BOT_TOKEN
-from get_book_name import get_book_name
+START_TEXT = """سلام به ربات کتاب خوب خوش آمدید شما میتوانید نام نویسنده یا کتاب مورد نظرتون رو جست و جو کنید تا بهترین نتایج به دست شما برسه:) """
 
-START_TEXT = """سلام به ربات کتاب خوب خوش آمدید
-نزدیکترین نام به کتاب مدنظرتون رو بنویسید تا ربات پیدا بکنه! """
 bot = Client(BOT_TOKEN)
 try:
     messages = bot.get_messages()

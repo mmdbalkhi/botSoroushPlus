@@ -1,10 +1,44 @@
+#!/env/bin python3
+"""Models Client and get_book_name"""
+
 import json
-import os
+from os.path import isfile
 from time import sleep
 
-import requests
-import sseclient
+from bs4 import BeautifulSoup
+from requests import get, post
+from sseclient import SSEClient
 
+def delete_char(name):
+    """delete span tag in name"""
+    newname = str(name).replace("</span>", "")
+    newname = str(newname).replace(
+        """<span aria-level="4" itemprop="name" role="heading">""", "")
+    newname = str(newname).replace('<span itemprop="name">', '')
+
+    return newname
+
+
+def get_book_name(search_mark):
+    """get book name at googdread"""
+
+    good_reads = f'https://www.goodreads.com/search?q={search_mark}'
+
+    data = get(good_reads).content
+    soup = BeautifulSoup(data, features="html5lib")
+
+    loopnum = 1
+    names = ''
+    for name in soup.select('.bookTitle span'):
+
+        loopnum += 1
+
+        newname = delete_char(name)
+
+        names += f"{loopnum}-{newname}\n\n"
+        if loopnum == 10:  # TODO: loopnum is hardCode
+            break
+    return "این کتاب ها را یافتیم!\n\n"+names
 
 class Client:
     HEADERS = {'Content-Type': 'Application/json',
@@ -41,9 +75,9 @@ class Client:
 
         while True:
             try:
-                response = requests.get(url, stream=True)
+                response = get(url, stream=True)
                 if 'Content-Type' in response.headers:
-                    client = sseclient.SSEClient(response)
+                    client = SSEClient(response)
 
                     print('connected successfully\n')
 
@@ -55,7 +89,8 @@ class Client:
                             print(e.args[0])
                             continue
                 else:
-                    print('Invalid bot token OR Invalid connection response from server')
+                    print(
+                        'Invalid bot token OR Invalid connection response from server')
 
                 print('retry to connect after 10 seconds...')
                 sleep(self.RETRY_DELAY)
@@ -75,7 +110,7 @@ class Client:
         post_data = json.dumps(post_data, separators=(',', ':'))
 
         try:
-            response = requests.post(url, post_data, headers=self.HEADERS)
+            response = post(url, post_data, headers=self.HEADERS)
 
             if response:
                 response_json = json.loads(response.text)
@@ -308,7 +343,7 @@ class Client:
             raise ValueError('Invalid file url')
 
         try:
-            response = requests.get(self.get_download_file_url(file_url))
+            response = get(self.get_download_file_url(file_url))
 
             if response.status_code == 200:
                 try:
@@ -326,12 +361,12 @@ class Client:
             return [e.args[0], False]
 
     def upload_file(self, file_path):
-        if not os.path.isfile(file_path):
+        if not isfile(file_path):
             raise ValueError('Invalid file')
 
         try:
             file = {'file': open(file_path, 'rb')}
-            response = requests.post(self.get_upload_file_url(), files=file)
+            response = post(self.get_upload_file_url(), files=file)
 
             if response.status_code == 200:
                 if response:
@@ -355,3 +390,5 @@ class Client:
                 return ['Bad Response: ' + str(response.status_code) + ' status code', False]
         except Exception as e:
             return [e.args[0], False]
+
+
