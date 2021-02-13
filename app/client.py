@@ -9,7 +9,8 @@ from bs4 import BeautifulSoup
 from requests import get, post
 from sseclient import SSEClient
 
-def delete_char(name):
+
+def delete_span(name):
     """delete span tag in name"""
     newname = str(name).replace("</span>", "")
     newname = str(newname).replace(
@@ -19,8 +20,28 @@ def delete_char(name):
     return newname
 
 
+def delete_char(word):
+    if "&" in word:
+        word = word.replace("amp", '')
+
+    Bad_characters = """~`@#$%^*()_+|\}{":><;:.؛‌&"""
+    for char in Bad_characters:
+        if char in word:
+            word = str(word).replace(char, "")
+
+    
+    word = str(word).replace(" ", "+")
+    print(word)
+    return word 
+
+
 def get_book_name(search_mark):
     """get book name at googdread"""
+
+    search_mark = delete_char(search_mark)
+    if search_mark == '':
+        return "لطفا از عبارات معنی دار استفاده کنید ! "
+        exit(0)
 
     good_reads = f'https://www.goodreads.com/search?q={search_mark}'
 
@@ -31,14 +52,16 @@ def get_book_name(search_mark):
     names = ''
     for name in soup.select('.bookTitle span'):
 
-        loopnum += 1
 
-        newname = delete_char(name)
+        newname = delete_span(name)
 
         names += f"{loopnum}-{newname}\n\n"
+        loopnum += 1
+
         if loopnum == 10:  # TODO: loopnum is hardCode
             break
     return "این کتاب ها را یافتیم!\n\n"+names
+
 
 class Client:
     HEADERS = {'Content-Type': 'Application/json',
@@ -390,5 +413,3 @@ class Client:
                 return ['Bad Response: ' + str(response.status_code) + ' status code', False]
         except Exception as e:
             return [e.args[0], False]
-
-
