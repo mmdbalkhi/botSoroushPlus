@@ -18,7 +18,7 @@ try:
         elif message["type"] == "TEXT":
             SEND_TEXT = get_book_name(message["body"])
 
-            if SEND_TEXT == "این کتاب ها را یافتیم!\n\n":
+            if SEND_TEXT == "برای کلیدواژه «الپاچینو» این کتاب(ها)را یافتیم.\n\n":
                 SEND_TEXT = "چیزی نیافتیم! لطفا در نوشتار کلمه دقت کنید! "
 
             bot.send_text(message["from"], SEND_TEXT)
