@@ -40,6 +40,6 @@ mv  config.py.sample config.py
 
 bot_token = "your token"
 
-`````
+```
 
 power by [goodreads.com](https://www.goodreads.com/)
