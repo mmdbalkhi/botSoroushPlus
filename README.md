@@ -34,7 +34,6 @@ mv  config.py.sample config.py
 
 4. edit ``bot.py`` and add your token:
 
-``
 
 ``` python
 
