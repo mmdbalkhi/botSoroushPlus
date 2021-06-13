@@ -35,10 +35,10 @@ def delete_char(word):
     return word 
 
 
-def get_book_name(search_mark):
+def get_book_name(search_mark_org):
     """get book name at googdread"""
 
-    search_mark = delete_char(search_mark)
+    search_mark = delete_char(search_mark_org)
     if search_mark == '':
         return "لطفا از عبارات معنی دار استفاده کنید ! "
         exit(0)
@@ -60,13 +60,13 @@ def get_book_name(search_mark):
 
         if loopnum == 10:  # TODO: loopnum is hardCode
             break
-    return "این کتاب ها را یافتیم!\n\n"+names
+    return f"برای کلیدواژه {search_mark_org} این کتاب(ها)را یافتیم.\n\n"+names
 
 
 class Client:
     HEADERS = {'Content-Type': 'Application/json',
                'Accept': 'Application/json'}
-    BASE_URL = 'https://bot.sapp.ir/'
+    BASE_URL = 'https://bot.splus.ir'
     GET_MESSAGE_URL = '/getMessage'
     SEND_MESSAGE_URL = '/sendMessage'
     DOWNLOAD_FILE_URL = '/downloadFile/'
