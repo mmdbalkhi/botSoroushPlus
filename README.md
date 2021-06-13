@@ -29,7 +29,7 @@ pip install -r requirements.txt
 ```
 
 ```bash
-mv  config.py.sample config.py
+cp config.py.sample config.py
 ```
 
 4. edit `bot.py` and add your token:
@@ -37,7 +37,7 @@ mv  config.py.sample config.py
 
 ``` python
 
-bot_token = "your token"
+BOT_TOKEN = "your token"
 
 ```
 
