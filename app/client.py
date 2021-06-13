@@ -60,7 +60,7 @@ def get_book_name(search_mark_org):
 
         if loopnum == 10:  # TODO: loopnum is hardCode
             break
-    return f"برای کلیدواژه {search_mark_org} این کتاب(ها)را یافتیم.\n\n"+names
+    return f"برای کلیدواژه «{search_mark_org}» این کتاب(ها)را یافتیم.\n\n"+names
 
 
 class Client:
