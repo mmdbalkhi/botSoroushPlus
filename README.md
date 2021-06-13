@@ -37,7 +37,7 @@ cp config.py.sample config.py
 
 ``` python
 
-bot_token = "your token"
+BOT_TOKEN = "your token"
 
 ```
 
