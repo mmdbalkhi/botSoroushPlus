@@ -13,12 +13,24 @@ To run bot in development mode; Just use steps below:
   
 
 ``` bash
-  git clone https://github.com/KomeilParseh/botSoroushPlus.git && cd botSoroushPlus
-  virtualenv -p python3 venv  # Create virtualenv named build
-  source venv/bin/activate
-  pip install -r requirements.txt
-  mv  config.py.sample config.py
-  ```
+git clone https://github.com/KomeilParseh/botSoroushPlus.git && cd botSoroushPlus
+```
+
+```bash
+virtualenv -p python3 venv  # Create virtualenv named build
+```
+
+```bash
+source venv/bin/activate
+```
+
+```bash
+pip install -r requirements.txt
+```
+
+```bash
+mv  config.py.sample config.py
+```
 
 4. edit ``bot.py`` and add your token:
 
