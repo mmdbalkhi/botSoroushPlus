@@ -66,7 +66,7 @@ def get_book_name(search_mark_org):
 class Client:
     HEADERS = {'Content-Type': 'Application/json',
                'Accept': 'Application/json'}
-    BASE_URL = 'https://bot.splus.ir'
+    BASE_URL = 'https://bot.splus.ir/'
     GET_MESSAGE_URL = '/getMessage'
     SEND_MESSAGE_URL = '/sendMessage'
     DOWNLOAD_FILE_URL = '/downloadFile/'
